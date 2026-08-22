@@ -1,18 +1,21 @@
 import streamlit as st
 import pandas as pd
-from data import MEMBERS, RULES
+from data import AUGUST_PAYMENTS, RULES
 
 st.set_page_config(page_title="PEXNA 94 - Secure Njangui Platform", page_icon="🎓", layout="wide")
 
 # Simple Password Gate for GDPR Compliance
 password = st.sidebar.text_input("Enter Batch Password to Access", type="password")
-if password != "pexna94_secure":  # Change to your secure password
+if password != "pexna94_secure":
     st.warning("🔒 This directory is password-protected for GDPR compliance. Please enter the authorized batch password.")
-    st.stop() # Stops the rest of the app from loading publicly
+    st.stop()
 
-# --- Rest of your secure app code below ---
+# --- Navigation ---
 st.sidebar.title("Menu")
-page = st.sidebar.radio("Navigate", ["Home", "Contact Us", "Privacy Policy", "French"])
+page = st.sidebar.radio("Navigate", ["Home", "August Njangui Ledger", "Contact Us", "Privacy Policy", "French"])
+
+df_payments = pd.DataFrame(AUGUST_PAYMENTS)
+total_collected = df_payments["amount_xaf"].sum()
 
 if page == "Home":
     st.title("African Tradition Meets Modern Finance")
@@ -44,6 +47,19 @@ if page == "Home":
     
     st.markdown("**Kamga Simo Junior** — *Senior Full Stack Engineer | Systems Analyst | Design Enthusiast*")
     st.write("Senior Full Stack Engineer blending code with creativity to build smart, scalable digital solutions.")
+    
+    st.markdown("---")
+    st.markdown("🌐 **Website:** [frankfru.com](https://frankfru.com)")
+    st.markdown("🔗 **LinkedIn:** [Frank Fru on LinkedIn](https://www.linkedin.com/in/frank-fru/)")
+
+elif page == "August Njangui Ledger":
+    st.title("August 2006 Njangui Payment Ledger")
+    st.write("Confirmed contributions for the August Njangui cycle.")
+    
+    st.metric(label="Total August Collections (XAF)", value=f"{total_collected:,} XAF")
+    
+    st.markdown("---")
+    st.dataframe(df_payments, use_container_width=True)
 
 elif page == "Contact Us":
     st.title("Contact Us")
