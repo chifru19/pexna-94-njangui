@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEXNA 94 - August Njangui Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- AUTHENTICATION SCREEN -->
+    <div id="auth-screen" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-800 to-slate-900 p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8">
+            <div class="text-center mb-6">
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">PEXNA 94</span>
+                <h1 class="text-2xl font-bold mt-2 text-slate-900">Enter Batch Password to Access</h1>
+                <p class="text-sm text-slate-500 mt-1">August Njangui Records</p>
+            </div>
+            <form id="auth-form" onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Batch Password</label>
+                    <input type="password" id="batch-password" required placeholder="Enter batch password..." 
+                           class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none">
+                    <p id="auth-error" class="text-red-500 text-xs mt-1 hidden">Incorrect batch password. Try again (Hint: pexna94).</p>
+                </div>
+                <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 rounded-lg transition duration-200 shadow-md">
+                    Access Dashboard
+                </button>
+            </form>
+            <div class="mt-8 text-center text-xs text-slate-400">
+                <p>© 2026 PEXNA 94. All rights reserved.</p>
+                <p class="mt-1"><a href="https://frankfru.com" target="_blank" class="text-emerald-600 hover:underline">frankfru.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP INTERFACE -->
+    <div id="app-screen" class="hidden min-h-screen flex flex-col">
+        
+        <!-- Header -->
+        <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-emerald-600 text-white font-bold p-2 rounded-lg text-lg"><i class="fa-solid fa-vault"></i></div>
+                    <div>
+                        <h1 class="font-bold text-lg leading-tight">PEXNA 94 Njangi</h1>
+                        <span class="text-xs text-emerald-400">August Session • 21 Verified Members</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm hidden md:inline text-slate-300">Welcome, Frank Fru</span>
+                    <button onclick="handleLogout()" class="bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg text-sm text-red-400 transition">
+                        <i class="fa-solid fa-right-from-bracket mr-1"></i> Lock
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="bg-white border-b border-slate-200 shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 flex overflow-x-auto space-x-6 py-3">
+                <button onclick="switchTab('dashboard')" class="tab-btn font-medium text-sm text-emerald-700 border-b-2 border-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-chart-pie mr-1.5"></i> Dashboard</button>
+                <button onclick="switchTab('cycles')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-rotate mr-1.5"></i> August Roster</button>
+                <button onclick="switchTab('transactions')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-list-ul mr-1.5"></i> Transactions</button>
+                <button onclick="switchTab('loans')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-hand-holding-dollar mr-1.5"></i> Loans</button>
+                <button onclick="switchTab('chat')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> Group Chat</button>
+                <button onclick="switchTab('services')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-store mr-1.5"></i> Backmarket & Lotto</button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6">
+
+            <!-- TAB 1: DASHBOARD -->
+            <div id="tab-dashboard" class="tab-content active space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <p class="text-xs font-semibold text-slate-500 uppercase">August Total Collection</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">4,150,000 XAF</h3>
+                        <span class="text-xs text-emerald-600 font-medium mt-2 inline-block"><i class="fa-solid fa-check-circle"></i> 100% Fully Paid</span>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <p class="text-xs font-semibold text-slate-500 uppercase">My Contribution (Chi Fru)</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">250,000 XAF</h3>
+                        <span class="text-xs text-emerald-600 font-semibold mt-2 inline-block">✅ Confirmed</span>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <p class="text-xs font-semibold text-slate-500 uppercase">Active Loans Out</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">1,500,000 XAF</h3>
+                        <span class="text-xs text-amber-600 font-medium mt-2 inline-block">3 Loans Running</span>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                        <p class="text-xs font-semibold text-slate-500 uppercase">Trouble Fund Reserve</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">350,000 XAF</h3>
+                        <span class="text-xs text-emerald-600 font-medium mt-2 inline-block">Secure Community Pool</span>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Highlights -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-slate-800 mb-4"><i class="fa-solid fa-bolt text-amber-500 mr-2"></i> Quick Actions</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <button onclick="switchTab('cycles')" class="p-4 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg text-center transition">
+                                <i class="fa-solid fa-users text-emerald-700 text-xl mb-2"></i>
+                                <span class="block font-semibold text-emerald-900 text-sm">View August Roster</span>
+                            </button>
+                            <button onclick="switchTab('loans')" class="p-4 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg text-center transition">
+                                <i class="fa-solid fa-file-invoice-dollar text-blue-700 text-xl mb-2"></i>
+                                <span class="block font-semibold text-blue-900 text-sm">Request Loan</span>
+                            </button>
+                            <button onclick="switchTab('chat')" class="p-4 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg text-center transition">
+                                <i class="fa-solid fa-comment-dots text-purple-700 text-xl mb-2"></i>
+                                <span class="block font-semibold text-purple-900 text-sm">Group Chat</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-slate-800 mb-3"><i class="fa-solid fa-bullhorn text-emerald-700 mr-2"></i> Notice Board</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="p-3 bg-slate-50 rounded-lg border-l-4 border-emerald-600">
+                                <p class="font-semibold text-slate-800">August Payouts Completed</p>
+                                <p class="text-slate-500 text-xs mt-0.5">All 21 member contributions verified successfully.</p>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-lg border-l-4 border-amber-500">
+                                <p class="font-semibold text-slate-800">Next Meeting</p>
+                                <p class="text-slate-500 text-xs mt-0.5">September cycle planning starts soon.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: AUGUST ROSTER -->
+            <div id="tab-cycles" class="tab-content space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-slate-800 text-lg">PEXNA 94 August Njangui Payment Roster (21 Members)</h3>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-medium">Total: 4,150,000 XAF</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-600 text-xs uppercase font-semibold">
+                                    <th class="p-3 rounded-l-lg">#</th>
+                                    <th class="p-3">Member Name</th>
+                                    <th class="p-3">August Share Amount</th>
+                                    <th class="p-3 rounded-r-lg">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="member-roster" class="text-sm divide-y divide-slate-100"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: TRANSACTIONS -->
+            <div id="tab-transactions" class="tab-content space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-slate-800 text-lg mb-4">August Payment Transaction History</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-600 text-xs uppercase font-semibold">
+                                    <th class="p-3 rounded-l-lg">Date</th>
+                                    <th class="p-3">Member</th>
+                                    <th class="p-3">Type</th>
+                                    <th class="p-3">Amount</th>
+                                    <th class="p-3 rounded-r-lg">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transaction-list" class="text-sm divide-y divide-slate-100"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: LOANS -->
+            <div id="tab-loans" class="tab-content space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-slate-800 text-lg">Group Loan Requests & Repayments</h3>
+                        <button onclick="requestLoan()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
+                            <i class="fa-solid fa-plus mr-1"></i> Request Loan
+                        </button>
+                    </div>
+                    <div class="space-y-3" id="loan-list"></div>
+                </div>
+            </div>
+
+            <!-- TAB 5: CHAT -->
+            <div id="tab-chat" class="tab-content space-y-6">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col h-[600px]">
+                    <div class="p-4 border-b border-slate-200 bg-slate-50 rounded-t-xl flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800"><i class="fa-solid fa-comments text-emerald-700 mr-2"></i> PEXNA 94 Group Chat</h3>
+                        <span class="text-xs text-slate-500">21 Members Connected</span>
+                    </div>
+                    <div id="chat-messages" class="flex-grow p-4 overflow-y-auto space-y-3 bg-slate-50/50"></div>
+                    <div class="p-4 border-t border-slate-200 bg-white rounded-b-xl flex gap-2">
+                        <input type="text" id="chat-input" placeholder="Type a message to the group..." 
+                               class="flex-grow px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                               onkeypress="if(event.key === 'Enter') sendChatMessage()">
+                        <button onclick="sendChatMessage()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2 rounded-lg font-semibold transition">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 6: BACKMARKET & LOTTO -->
+            <div id="tab-services" class="tab-content space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-slate-800 text-lg mb-2"><i class="fa-solid fa-ticket text-amber-500 mr-2"></i> Daily Lotto Draw</h3>
+                        <p class="text-sm text-slate-500 mb-4">Win cash pools generated from community interest fees.</p>
+                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg text-center mb-4">
+                            <span class="text-xs font-bold text-amber-800 uppercase">Current Jackpot Pool</span>
+                            <h4 class="text-3xl font-extrabold text-amber-900 mt-1">150,000 XAF</h4>
+                        </div>
+                        <button onclick="playLotto()" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2.5 rounded-lg transition">
+                            Enter Today's Draw (5,000 XAF)
+                        </button>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                        <h3 class="font-bold text-slate-800 text-lg mb-2"><i class="fa-solid fa-store text-emerald-700 mr-2"></i> Njangi Backmarket</h3>
+                        <p class="text-sm text-slate-500 mb-4">Post & discover verified services within PEXNA 94.</p>
+                        <div class="space-y-3 mb-4" id="backmarket-list">
+                            <div class="p-3 border border-slate-200 rounded-lg">
+                                <p class="font-semibold text-sm text-slate-800">Professional Tax & Accounting Services</p>
+                                <p class="text-xs text-slate-500">Offered by Frank Fru • 10% discount for members</p>
+                            </div>
+                        </div>
+                        <button onclick="postService()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 rounded-lg transition">
+                            Post New Service
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-slate-200 py-4 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+                <p>© 2026 PEXNA 94. Empowering community savings through digital innovation.</p>
+                <p class="mt-1">Website: <a href="https://frankfru.com" target="_blank" class="text-emerald-600 hover:underline">frankfru.com</a> | LinkedIn: <a href="https://www.linkedin.com/in/frank-fru" target="_blank" class="text-emerald-600 hover:underline">Frank Fru on LinkedIn</a></p>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        const membersData = [
+            { name: "Odette Sanyi", amount: "250,000 XAF" },
+            { name: "Julia Fohtung", amount: "250,000 XAF" },
+            { name: "Tata Fidelis", amount: "350,000 XAF" },
+            { name: "Grace Chebe", amount: "150,000 XAF" },
+            { name: "Edna Atogho", amount: "200,000 XAF" },
+            { name: "Tah Desiree", amount: "50,000 XAF" },
+            { name: "Chi Fru", amount: "250,000 XAF" },
+            { name: "Goodhopes", amount: "250,000 XAF" },
+            { name: "Chick Delphine", amount: "100,000 XAF" },
+            { name: "Atud Clotilde", amount: "350,000 XAF" },
+            { name: "Abongou Louise", amount: "50,000 XAF" },
+            { name: "Mbangwana Vera", amount: "100,000 XAF" },
+            { name: "Mancho Eben", amount: "200,000 XAF" },
+            { name: "Atogho Charles", amount: "500,000 XAF" },
+            { name: "Kwalar Comfort", amount: "150,000 XAF" },
+            { name: "Mbah Jane", amount: "150,000 XAF" },
+            { name: "Asanji Burnley", amount: "200,000 XAF" },
+            { name: "Ningkum Courage", amount: "350,000 XAF" },
+            { name: "Germain Manor", amount: "50,000 XAF" },
+            { name: "Numfor Neba", amount: "250,000 XAF" },
+            { name: "Ayute Eric", amount: "300,000 XAF" }
+        ];
+
+        let transactions = membersData.map((m, idx) => ({
+            date: `Aug ${22 - (idx % 5)}, 2026`,
+            member: m.name,
+            type: "August Contribution",
+            amount: m.amount,
+            status: "Completed ✅"
+        }));
+
+        let loans = [
+            { id: 1, borrower: "Chi Fru", amount: "500,000 XAF", purpose: "Business Expansion", status: "Approved" },
+            { id: 2, borrower: "Atogho Charles", amount: "600,000 XAF", purpose: "Project Investment", status: "Active" },
+            { id: 3, borrower: "Tata Fidelis", amount: "400,000 XAF", purpose: "Family Support", status: "Approved" }
+        ];
+
+        let chatMessages = [
+            { sender: "Tata Fidelis", text: "August contributions are coming in smoothly everyone!", time: "09:14 AM" },
+            { sender: "Chi Fru", text: "All 21 payments for August have been verified and logged successfully.", time: "10:16 AM" },
+            { sender: "Odette Sanyi", text: "Great transparency on the platform!", time: "11:20 AM" }
+        ];
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('batch-password').value;
+            if(pass === 'pexna94') {
+                document.getElementById('auth-screen').classList.add('hidden');
+                document.getElementById('app-screen').classList.remove('hidden');
+                initApp();
+            } else {
+                document.getElementById('auth-error').classList.remove('hidden');
+            }
+        }
+
+        function handleLogout() {
+            document.getElementById('auth-screen').classList.remove('hidden');
+            document.getElementById('app-screen').classList.add('hidden');
+            document.getElementById('batch-password').value = '';
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-emerald-700', 'border-b-2', 'border-emerald-700');
+                btn.classList.add('text-slate-600');
+            });
+            
+            document.getElementById('tab-' + tabId).classList.add('active');
+            event.currentTarget.classList.remove('text-slate-600');
+            event.currentTarget.classList.add('text-emerald-700', 'border-b-2', 'border-emerald-700');
+        }
+
+        function initApp() {
+            renderRoster();
+            renderTransactions();
+            renderLoans();
+            renderChat();
+        }
+
+        function renderRoster() {
+            const rosterEl = document.getElementById('member-roster');
+            rosterEl.innerHTML = membersData.map((m, index) => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3 font-semibold text-slate-400">${index + 1}</td>
+                    <td class="p-3 font-medium text-slate-800">${m.name}</td>
+                    <td class="p-3 text-emerald-700 font-semibold">${m.amount}</td>
+                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-semibold">Paid ✅</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function renderTransactions() {
+            const txEl = document.getElementById('transaction-list');
+            txEl.innerHTML = transactions.map(tx => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="p-3 text-slate-500 text-xs">${tx.date}</td>
+                    <td class="p-3 font-medium text-slate-800">${tx.member}</td>
+                    <td class="p-3">${tx.type}</td>
+                    <td class="p-3 font-semibold text-slate-900">${tx.amount}</td>
+                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full">${tx.status}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        function renderLoans() {
+            const loanEl = document.getElementById('loan-list');
+            loanEl.innerHTML = loans.map(l => `
+                <div class="p-4 border border-slate-200 rounded-lg flex justify-between items-center bg-slate-50">
+                    <div>
+                        <h4 class="font-bold text-slate-800">${l.borrower} - ${l.amount}</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Purpose: ${l.purpose}</p>
+                    </div>
+                    <span class="px-3 py-1 text-xs rounded-full font-semibold ${l.status === 'Approved' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800'}">${l.status}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderChat() {
+            const chatEl = document.getElementById('chat-messages');
+            chatEl.innerHTML = chatMessages.map(msg => `
+                <div class="flex flex-col">
+                    <div class="flex items-center space-x-2">
+                        <span class="font-bold text-xs text-slate-800">${msg.sender}</span>
+                        <span class="text-[10px] text-slate-400">${msg.time}</span>
+                    </div>
+                    <div class="mt-1 bg-white p-3 rounded-lg border border-slate-200 shadow-sm text-sm text-slate-700 max-w-lg">
+                        ${msg.text}
+                    </div>
+                </div>
+            `).join('');
+            chatEl.scrollTop = chatEl.scrollHeight;
+        }
+
+        function requestLoan() {
+            const purpose = prompt("Enter loan purpose:");
+            const amount = prompt("Enter loan amount (e.g., 200,000 XAF):");
+            if(purpose && amount) {
+                loans.push({ id: loans.length + 1, borrower: "Chi Fru", amount: amount, purpose: purpose, status: "Pending Approval" });
+                renderLoans();
+                alert("Loan request submitted successfully!");
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            if(input.value.trim() !== '') {
+                chatMessages.push({ sender: "Chi Fru", text: input.value, time: "Just now" });
+                input.value = '';
+                renderChat();
+            }
+        }
+
+        function playLotto() {
+            alert("You have successfully entered today's Lotto Draw! Good luck!");
+        }
+
+        function postService() {
+            const service = prompt("Enter service name:");
+            if(service) {
+                const list = document.getElementById('backmarket-list');
+                list.innerHTML += `
+                    <div class="p-3 border border-slate-200 rounded-lg mt-2">
+                        <p class="font-semibold text-sm text-slate-800">${service}</p>
+                        <p class="text-xs text-slate-500">Offered by Chi Fru • Member Verified</p>
+                    </div>
+                `;
+                alert("Service posted to Backmarket!");
+            }
+        }
+    </script>
+</body>
+</html>
