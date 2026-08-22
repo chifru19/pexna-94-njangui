@@ -19,28 +19,69 @@ total_collected = df_payments["amount_xaf"].sum()
 
 if page == "Home":
     st.title("African Tradition Meets Modern Finance")
-    st.subheader("Digitize your PEXNA 94 Njangui experience. Manage cycles, sessions, savings, loans, and group activities securely.")
+    st.subheader("Digitize your Njangi experience. Manage cycles, sessions, savings, loans, and group activities all in one secure and user-friendly mobile app.")
 
     st.markdown("---")
-    col1, col2, col3 = st.columns(3)
+    
+    col1, col2 = st.columns(2)
     with col1:
-        st.markdown("### 📊 Group Dashboard")
-        st.write("Easily view balances and manage all Njangi groups in one place.")
+        st.markdown("### 📊 Group Dashboard & Balance Overview")
+        st.write("Easily view your current balance and manage all your Njangi groups in one place.")
+        
+        st.markdown("### 🔄 Automated Njangi Cycles")
+        st.write("Njangi cycles start and manage themselves based on your configured settings.")
+        
+        st.markdown("### 💬 In-App Group Messaging")
+        st.write("Chat with members, send private messages, and share important updates in real-time.")
+        
+        st.markdown("### 📈 Detailed Transaction History")
+        st.write("Track every deposit, withdrawal, and platform fee with full transparency.")
+        
+        st.markdown("### 💡 Smart Savings & Profit Tracking")
+        st.write("See how much you've saved, withdrawn, and the profits earned—automatically calculated.")
+        
     with col2:
-        st.markdown("### 🔄 Automated Cycles")
-        st.write("Njangi cycles start and manage themselves based on configured schedules.")
-    with col3:
-        st.markdown("### 💬 In-App Messaging")
-        st.write("Chat with members, send private messages, and get 48-hour automated reminders.")
+        st.markdown("### 🏦 Loan Requests & Repayments")
+        st.write("Request, approve, and repay group loans with a streamlined, secure workflow.")
+        
+        st.markdown("### ⏱️ Build Njangi Groups in Seconds")
+        st.write("Create and customize your Njangi cycles with just a few taps.")
+        
+        st.markdown("### 🛠️ Built-in Group Tools")
+        st.write("Showcase your group’s finances, chat, and sessions—no extra software needed.")
+        
+        st.markdown("### ⚡ Smart Interface & Real-Time Communication")
+        st.write("Enjoy intuitive design and connect instantly with group members through chats and updates.")
+        
+        st.markdown("### 🚀 Powerful All-in-One Njangi App")
+        st.write("From contributions to cashouts, Njangi simplifies traditional savings with modern tech.")
 
     st.markdown("---")
-    st.subheader("PEXNA 94 Guidelines & Penalty Framework Highlights")
-    st.write(f"- **Slot Contribution:** Fixed at {RULES['slot_amount']:,} XAF per hand (Maximum {RULES['max_hands']} hands per member).")
-    st.write(f"- **Contribution Schedule:** {RULES['schedule']}.")
-    st.write(f"- **Late Fee Penalty:** {int(RULES['late_fee_percentage']*100)}% of the missed outstanding contribution.")
-    st.write(f"- **Suspension Rule:** After {RULES['suspension_limit']} missed payments, suspension from payouts applies.")
+    st.subheader("Why Choose Njangi?")
+    st.write("- **Instant Setup & Smart Group Management**")
+    st.write("- **Enhanced Security with KYC**")
+    st.write("- **Built-in Group Communication**")
+    st.write("- **Transparent Finances & Personal Savings**")
+    st.write("- **Njangi Bank – Personal Savings Made Easy**")
+    st.write("- **Njangi Backmarket – Post & Discover Services**")
+    st.write("- **Lotto Draws – Win Cash Every Day**")
+    st.write("- **Trouble Funds – Community in Times of Need**")
+    st.write("- **Njangi Advertisement – Promote Inside Your Groups**")
 
     st.markdown("---")
+    st.subheader("Behind The App")
+    
+    st.markdown("### Dr. ATEH Thomson Pepeah")
+    st.write("**Founder | Lawyer**")
+    st.write("Husband, lawyer, and university lecturer specializing in Economics, Corporate, Labour, Business Law, and IP. Author and Associate Chartered Arbitrator with a passion for impactful legal education.")
+    
+    st.markdown("### Kamga Simo Junior")
+    st.write("**Senior Full Stack Engineer | Systems Analyst | Design Enthusiast**")
+    st.write("Senior Full Stack Engineer and Systems Analyst with a sharp eye for design. Blending code with creativity to build smart, scalable digital solutions.")
+
+    st.markdown("---")
+    st.subheader("Ready to Transform Your Njangi?")
+    st.write("Download Njangi today and unlock a smarter way to save, lend, and grow together.")
     st.markdown("🌐 **Website:** [frankfru.com](https://frankfru.com)")
     st.markdown("🔗 **LinkedIn:** [Frank Fru on LinkedIn](https://www.linkedin.com/in/frank-fru/)")
 
@@ -70,4 +111,4 @@ elif page == "French":
     st.write("Numérisez votre expérience Njangi. Gérez les cycles, les sessions, l'épargne et les prêts en toute sécurité.")
 
 st.sidebar.markdown("---")
-st.sidebar.text("© 2026 PEXNA 94. All rights reserved.")
+st.sidebar.text("© 2026 PEXNA 94. All rights reserved. Empowering community savings through digital innovation.")
