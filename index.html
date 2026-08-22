@@ -23,7 +23,7 @@
             <div class="text-center mb-6">
                 <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">PEXNA 94</span>
                 <h1 class="text-2xl font-bold mt-2 text-slate-900">Enter Batch Password to Access</h1>
-                <p class="text-sm text-slate-500 mt-1">August Njangui Records</p>
+                <p class="text-sm text-slate-500 mt-1">August 2026 - May 2027 Njangui Scheme</p>
             </div>
             <form id="auth-form" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
@@ -52,8 +52,8 @@
                 <div class="flex items-center space-x-3">
                     <div class="bg-emerald-600 text-white font-bold p-2 rounded-lg text-lg"><i class="fa-solid fa-vault"></i></div>
                     <div>
-                        <h1 class="font-bold text-lg leading-tight">PEXNA 94 Njangi</h1>
-                        <span class="text-xs text-emerald-400">August Session • 21 Verified Members</span>
+                        <h1 class="font-bold text-lg leading-tight">PEXNA 94 Njangui</h1>
+                        <span class="text-xs text-emerald-400">August 2026 – May 2027 Scheme • 5,000,000 XAF Monthly Pool</span>
                     </div>
                 </div>
                 <div class="flex items-center space-x-4">
@@ -73,7 +73,7 @@
                 <button onclick="switchTab('transactions')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-list-ul mr-1.5"></i> Transactions</button>
                 <button onclick="switchTab('loans')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-hand-holding-dollar mr-1.5"></i> Loans</button>
                 <button onclick="switchTab('chat')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> Group Chat</button>
-                <button onclick="switchTab('services')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-store mr-1.5"></i> Backmarket & Lotto</button>
+                <button onclick="switchTab('services')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-store mr-1.5"></i> Backmarket & Accounts</button>
             </div>
         </nav>
 
@@ -84,56 +84,61 @@
             <div id="tab-dashboard" class="tab-content active space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">August Total Collection</p>
-                        <h3 class="text-2xl font-bold text-slate-900 mt-1">4,150,000 XAF</h3>
-                        <span class="text-xs text-emerald-600 font-medium mt-2 inline-block"><i class="fa-solid fa-check-circle"></i> 100% Fully Paid</span>
+                        <p class="text-xs font-semibold text-slate-500 uppercase">Monthly Pool Target</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">5,000,000 XAF</h3>
+                        <span class="text-xs text-emerald-600 font-medium mt-2 inline-block"><i class="fa-solid fa-check-circle"></i> Aug 2026 – May 2027</span>
                     </div>
                     <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">My Contribution (Chi Fru)</p>
-                        <h3 class="text-2xl font-bold text-slate-900 mt-1">250,000 XAF</h3>
-                        <span class="text-xs text-emerald-600 font-semibold mt-2 inline-block">✅ Confirmed</span>
+                        <p class="text-xs font-semibold text-slate-500 uppercase">Minimum Hand (Slot)</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">50,000 XAF</h3>
+                        <span class="text-xs text-slate-600 font-semibold mt-2 inline-block">Multiple hands allowed</span>
                     </div>
                     <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">Active Loans Out</p>
-                        <h3 class="text-2xl font-bold text-slate-900 mt-1">1,500,000 XAF</h3>
-                        <span class="text-xs text-amber-600 font-medium mt-2 inline-block">3 Loans Running</span>
+                        <p class="text-xs font-semibold text-slate-500 uppercase">Schedule Rule</p>
+                        <h3 class="text-xl font-bold text-slate-900 mt-1">First Saturday</h3>
+                        <span class="text-xs text-amber-600 font-medium mt-2 inline-block">Monthly meetings</span>
                     </div>
                     <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">Trouble Fund Reserve</p>
-                        <h3 class="text-2xl font-bold text-slate-900 mt-1">350,000 XAF</h3>
-                        <span class="text-xs text-emerald-600 font-medium mt-2 inline-block">Secure Community Pool</span>
+                        <p class="text-xs font-semibold text-slate-500 uppercase">Total Scheme Pool</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">50,000,000 XAF</h3>
+                        <span class="text-xs text-emerald-600 font-medium mt-2 inline-block">Proportional payout</span>
                     </div>
                 </div>
 
                 <!-- Quick Actions & Highlights -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 class="font-bold text-slate-800 mb-4"><i class="fa-solid fa-bolt text-amber-500 mr-2"></i> Quick Actions</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <h3 class="font-bold text-slate-800 mb-4"><i class="fa-solid fa-bolt text-amber-500 mr-2"></i> Quick Actions & Scheme Rules</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
                             <button onclick="switchTab('cycles')" class="p-4 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg text-center transition">
                                 <i class="fa-solid fa-users text-emerald-700 text-xl mb-2"></i>
                                 <span class="block font-semibold text-emerald-900 text-sm">View August Roster</span>
                             </button>
-                            <button onclick="switchTab('loans')" class="p-4 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg text-center transition">
-                                <i class="fa-solid fa-file-invoice-dollar text-blue-700 text-xl mb-2"></i>
-                                <span class="block font-semibold text-blue-900 text-sm">Request Loan</span>
+                            <button onclick="switchTab('services')" class="p-4 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg text-center transition">
+                                <i class="fa-solid fa-university text-blue-700 text-xl mb-2"></i>
+                                <span class="block font-semibold text-blue-900 text-sm">Payment Details</span>
                             </button>
                             <button onclick="switchTab('chat')" class="p-4 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg text-center transition">
                                 <i class="fa-solid fa-comment-dots text-purple-700 text-xl mb-2"></i>
                                 <span class="block font-semibold text-purple-900 text-sm">Group Chat</span>
                             </button>
                         </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm space-y-1 text-slate-600">
+                            <p><strong>Scheme Duration:</strong> August 2026 to May 2027 (Every first Saturday).</p>
+                            <p><strong>Structure:</strong> Minimum hand is 50,000 XAF. Members can subscribe to multiple slots/hands.</p>
+                            <p><strong>Payouts:</strong> Each month totals 5,000,000 XAF distributed proportionally based on subscribed hands.</p>
+                        </div>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                         <h3 class="font-bold text-slate-800 mb-3"><i class="fa-solid fa-bullhorn text-emerald-700 mr-2"></i> Notice Board</h3>
                         <div class="space-y-3 text-sm">
                             <div class="p-3 bg-slate-50 rounded-lg border-l-4 border-emerald-600">
-                                <p class="font-semibold text-slate-800">August Payouts Completed</p>
-                                <p class="text-slate-500 text-xs mt-0.5">All 21 member contributions verified successfully.</p>
+                                <p class="font-semibold text-slate-800">First Play Completed</p>
+                                <p class="text-slate-500 text-xs mt-0.5">August session successfully executed.</p>
                             </div>
                             <div class="p-3 bg-slate-50 rounded-lg border-l-4 border-amber-500">
-                                <p class="font-semibold text-slate-800">Next Meeting</p>
-                                <p class="text-slate-500 text-xs mt-0.5">September cycle planning starts soon.</p>
+                                <p class="font-semibold text-slate-800">Second Play Notice</p>
+                                <p class="text-slate-500 text-xs mt-0.5">Second play takes place in the first week of September.</p>
                             </div>
                         </div>
                     </div>
@@ -145,7 +150,7 @@
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <h3 class="font-bold text-slate-800 text-lg">PEXNA 94 August Njangui Payment Roster (21 Members)</h3>
-                        <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-medium">Total: 4,150,000 XAF</span>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-medium">Monthly Pool: 5,000,000 XAF</span>
                     </div>
                     <!-- Search and Filter Controls -->
                     <div class="flex flex-col sm:flex-row gap-3">
@@ -228,19 +233,25 @@
                 </div>
             </div>
 
-            <!-- TAB 6: BACKMARKET & LOTTO -->
+            <!-- TAB 6: BACKMARKET & ACCOUNTS -->
             <div id="tab-services" class="tab-content space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
-                        <h3 class="font-bold text-slate-800 text-lg mb-2"><i class="fa-solid fa-ticket text-amber-500 mr-2"></i> Daily Lotto Draw</h3>
-                        <p class="text-sm text-slate-500 mb-4">Win cash pools generated from community interest fees.</p>
-                        <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg text-center mb-4">
-                            <span class="text-xs font-bold text-amber-800 uppercase">Current Jackpot Pool</span>
-                            <h4 class="text-3xl font-extrabold text-amber-900 mt-1">150,000 XAF</h4>
+                        <h3 class="font-bold text-slate-800 text-lg mb-4"><i class="fa-solid fa-university text-emerald-700 mr-2"></i> Official Payment Details</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                <p class="font-semibold text-slate-800">🏦 Bank Details</p>
+                                <p class="text-slate-600 text-xs mt-1">Name: Sanyi Mehteh<br>Bank: Monzo Bank<br>Account Number: 30071590<br>Sort Code: 04-00-03</p>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                <p class="font-semibold text-slate-800">📱 MoMo Details</p>
+                                <p class="text-slate-600 text-xs mt-1">1) Float account: 677404090 (Odette Mehteh Sanyi)<br>2) Float code: 126*14*677404090*amount# (Note: send only njangui amount, do not send with charges)<br>3) Regular account: 675760100 (Agbor Isaac Etchu)</p>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                <p class="font-semibold text-slate-800">💳 PayPal Details</p>
+                                <p class="text-slate-600 text-xs mt-1">Name: Sanyi Odette Mehteh</p>
+                            </div>
                         </div>
-                        <button onclick="playLotto()" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2.5 rounded-lg transition">
-                            Enter Today's Draw (5,000 XAF)
-                        </button>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                         <h3 class="font-bold text-slate-800 text-lg mb-2"><i class="fa-solid fa-store text-emerald-700 mr-2"></i> Njangi Backmarket</h3>
@@ -311,9 +322,9 @@
         ];
 
         let chatMessages = [
-            { sender: "Tata Fidelis", text: "August contributions are coming in smoothly everyone!", time: "09:14 AM" },
-            { sender: "Chi Fru", text: "All 21 payments for August have been verified and logged successfully.", time: "10:16 AM" },
-            { sender: "Odette Sanyi", text: "Great transparency on the platform!", time: "11:20 AM" }
+            { sender: "Asanji Burnley", text: "Na the New Njangui that we don play na only 1 time. So inside this first week for september we go play second time.", time: "01:36 AM" },
+            { sender: "Asanji Burnley", text: "Minimum hand na 50k... So u can subscribe to as many as u can. Yi d run from August 2026 to May 2027 on every first Saturday of the month.", time: "01:39 AM" },
+            { sender: "Chi Fru", text: "Overall the njangui every month d comot 5million, divided proportionally to beneficiaries' subscribed slots.", time: "01:42 AM" }
         ];
 
         function handleLogin(e) {
@@ -355,13 +366,9 @@
 
         function renderRoster() {
             const searchQuery = document.getElementById('roster-search').value.toLowerCase();
-            const statusFilter = document.getElementById('roster-filter').value;
             const rosterEl = document.getElementById('member-roster');
 
-            const filteredMembers = membersData.filter(m => {
-                const matchesSearch = m.name.toLowerCase().includes(searchQuery);
-                return matchesSearch;
-            });
+            const filteredMembers = membersData.filter(m => m.name.toLowerCase().includes(searchQuery));
 
             rosterEl.innerHTML = filteredMembers.map((m, index) => `
                 <tr class="hover:bg-slate-50 transition">
@@ -432,10 +439,6 @@
                 input.value = '';
                 renderChat();
             }
-        }
-
-        function playLotto() {
-            alert("You have successfully entered today's Lotto Draw! Good luck!");
         }
 
         function postService() {
