@@ -69,17 +69,6 @@ if page == "Home":
     st.write("- **Njangi Advertisement – Promote Inside Your Groups**")
 
     st.markdown("---")
-    st.subheader("Behind The App")
-    
-    st.markdown("### Dr. ATEH Thomson Pepeah")
-    st.write("**Founder | Lawyer**")
-    st.write("Husband, lawyer, and university lecturer specializing in Economics, Corporate, Labour, Business Law, and IP. Author and Associate Chartered Arbitrator with a passion for impactful legal education.")
-    
-    st.markdown("### Kamga Simo Junior")
-    st.write("**Senior Full Stack Engineer | Systems Analyst | Design Enthusiast**")
-    st.write("Senior Full Stack Engineer and Systems Analyst with a sharp eye for design. Blending code with creativity to build smart, scalable digital solutions.")
-
-    st.markdown("---")
     st.subheader("Ready to Transform Your Njangi?")
     st.write("Download Njangi today and unlock a smarter way to save, lend, and grow together.")
     st.markdown("🌐 **Website:** [frankfru.com](https://frankfru.com)")
