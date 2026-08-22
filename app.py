@@ -2,9 +2,15 @@ import streamlit as st
 import pandas as pd
 from data import MEMBERS, RULES
 
-st.set_page_config(page_title="PEXNA 94 - Njangui Platform", page_icon="🎓", layout="wide")
+st.set_page_config(page_title="PEXNA 94 - Secure Njangui Platform", page_icon="🎓", layout="wide")
 
-# Sidebar Navigation
+# Simple Password Gate for GDPR Compliance
+password = st.sidebar.text_input("Enter Batch Password to Access", type="password")
+if password != "pexna94_secure":  # Change to your secure password
+    st.warning("🔒 This directory is password-protected for GDPR compliance. Please enter the authorized batch password.")
+    st.stop() # Stops the rest of the app from loading publicly
+
+# --- Rest of your secure app code below ---
 st.sidebar.title("Menu")
 page = st.sidebar.radio("Navigate", ["Home", "Contact Us", "Privacy Policy", "French"])
 
