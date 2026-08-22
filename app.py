@@ -41,14 +41,6 @@ if page == "Home":
     st.write(f"- **Suspension Rule:** After {RULES['suspension_limit']} missed payments, suspension from payouts applies.")
 
     st.markdown("---")
-    st.subheader("Behind The App")
-    st.markdown("**Dr. ATEH Thomson Pepeah** — *Founder | Lawyer*")
-    st.write("Husband, lawyer, and university lecturer specializing in Economics, Corporate, Labour, Business Law, and IP.")
-    
-    st.markdown("**Kamga Simo Junior** — *Senior Full Stack Engineer | Systems Analyst | Design Enthusiast*")
-    st.write("Senior Full Stack Engineer blending code with creativity to build smart, scalable digital solutions.")
-    
-    st.markdown("---")
     st.markdown("🌐 **Website:** [frankfru.com](https://frankfru.com)")
     st.markdown("🔗 **LinkedIn:** [Frank Fru on LinkedIn](https://www.linkedin.com/in/frank-fru/)")
 
