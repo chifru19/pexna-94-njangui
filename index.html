@@ -310,6 +310,19 @@
                             <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
                                 <p class="font-semibold text-slate-800">📱 MoMo Details</p>
                                 <p class="text-slate-600 text-xs mt-1">1) Float account: 677404090 (Odette Mehteh Sanyi)<br>2) Regular account: 675760100 (Agbor Isaac Etchu)</p>
+
+                            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200 mt-3">
+                                <p class="font-semibold text-slate-800">🚀 Paysgo Automated MoMo Checkout</p>
+                                <p class="text-slate-600 text-xs mt-1">Pay directly into Odette's float account (677404090) via your Paysgo gateway.</p>
+                                <div class="mt-2 space-y-2">
+                                    <input type="text" id="momo-phone" placeholder="Enter MoMo Number (e.g., 677...)" class="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none">
+                                    <input type="number" id="momo-amount" value="50000" placeholder="Amount (XAF)" class="w-full px-3 py-2 border border-slate-300 rounded text-xs focus:outline-none">
+                                    <button onclick="payViaPaysgo()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-2 rounded text-xs transition">
+                                        Pay via Paysgo MoMo Gateway
+                                    </button>
+                                </div>
+                            </div>
+
                             </div>
                         </div>
                     </div>
