@@ -23,7 +23,7 @@
             <div class="text-center mb-6">
                 <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">PEXNA 94</span>
                 <h1 class="text-2xl font-bold mt-2 text-slate-900">Enter Batch Password to Access</h1>
-                <p class="text-sm text-slate-500 mt-1">August 2026 - May 2027 Master Schedule & Platform</p>
+                <p class="text-sm text-slate-500 mt-1">August 2026 - May 2027 Master Database</p>
             </div>
             <form id="auth-form" onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
@@ -69,11 +69,12 @@
         <nav class="bg-white border-b border-slate-200 shadow-sm">
             <div class="max-w-7xl mx-auto px-4 flex overflow-x-auto space-x-6 py-3">
                 <button onclick="switchTab('dashboard')" class="tab-btn font-medium text-sm text-emerald-700 border-b-2 border-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-chart-pie mr-1.5"></i> Dashboard</button>
+                <button onclick="switchTab('database')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-database mr-1.5"></i> Member Database</button>
                 <button onclick="switchTab('master')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-calendar-days mr-1.5"></i> Master Schedule</button>
-                <button onclick="switchTab('solidarity')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-hand-holding-heart mr-1.5"></i> Solidarity & Crises</button>
+                <button onclick="switchTab('solidarity')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-hand-holding-heart mr-1.5"></i> Solidarity</button>
                 <button onclick="switchTab('ads')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-rectangle-ad mr-1.5"></i> Group Ads</button>
                 <button onclick="switchTab('admin')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-user-gear mr-1.5"></i> Admin Panel</button>
-                <button onclick="switchTab('transactions')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-list-ul mr-1.5"></i> Transactions & Savings</button>
+                <button onclick="switchTab('transactions')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-list-ul mr-1.5"></i> Transactions</button>
                 <button onclick="switchTab('loans')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-hand-holding-dollar mr-1.5"></i> Loans</button>
                 <button onclick="switchTab('chat')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-comments mr-1.5"></i> Group Chat</button>
                 <button onclick="switchTab('services')" class="tab-btn font-medium text-sm text-slate-600 hover:text-emerald-700 pb-1 whitespace-nowrap"><i class="fa-solid fa-store mr-1.5"></i> Backmarket & Accounts</button>
@@ -85,26 +86,21 @@
 
             <!-- TAB 1: DASHBOARD -->
             <div id="tab-dashboard" class="tab-content active space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                         <p class="text-xs font-semibold text-slate-500 uppercase">Monthly Pool</p>
                         <h3 class="text-2xl font-bold text-slate-900 mt-1">5,000,000 XAF</h3>
                         <span class="text-xs text-emerald-600 font-medium mt-2 inline-block"><i class="fa-solid fa-check-circle"></i> August 2026 – May 2027</span>
                     </div>
                     <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">My Total Savings</p>
-                        <h3 class="text-2xl font-bold text-slate-900 mt-1">250,000 XAF</h3>
-                        <span class="text-xs text-emerald-600 font-semibold mt-2 inline-block">+ Profit tracked automatically</span>
+                        <p class="text-xs font-semibold text-slate-500 uppercase">Registered Members</p>
+                        <h3 class="text-2xl font-bold text-slate-900 mt-1">21 Members</h3>
+                        <span class="text-xs text-emerald-600 font-semibold mt-2 inline-block">Managed via Member Database</span>
                     </div>
                     <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
                         <p class="text-xs font-semibold text-slate-500 uppercase">Total Scheme Pool</p>
                         <h3 class="text-2xl font-bold text-slate-900 mt-1">50,000,000 XAF</h3>
                         <span class="text-xs text-amber-600 font-medium mt-2 inline-block">Proportional take-home</span>
-                    </div>
-                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
-                        <p class="text-xs font-semibold text-slate-500 uppercase">Active Crises / Emergencies</p>
-                        <h3 class="text-xl font-bold text-rose-600 mt-1" id="crisis-count-badge">1 Active</h3>
-                        <span class="text-xs text-rose-500 font-medium mt-2 inline-block">Solidarity fund open</span>
                     </div>
                 </div>
 
@@ -113,22 +109,18 @@
                     <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                         <h3 class="font-bold text-slate-800 mb-4"><i class="fa-solid fa-bolt text-amber-500 mr-2"></i> Quick Actions & App Tools</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+                            <button onclick="switchTab('database')" class="p-4 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg text-center transition">
+                                <i class="fa-solid fa-database text-emerald-700 text-xl mb-2"></i>
+                                <span class="block font-semibold text-emerald-900 text-sm">Member Database</span>
+                            </button>
                             <button onclick="switchTab('solidarity')" class="p-4 bg-rose-50 hover:bg-rose-100 border border-rose-200 rounded-lg text-center transition">
                                 <i class="fa-solid fa-hand-holding-heart text-rose-700 text-xl mb-2"></i>
                                 <span class="block font-semibold text-rose-900 text-sm">Emergency Fund</span>
-                            </button>
-                            <button onclick="switchTab('ads')" class="p-4 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg text-center transition">
-                                <i class="fa-solid fa-rectangle-ad text-blue-700 text-xl mb-2"></i>
-                                <span class="block font-semibold text-blue-900 text-sm">Group Feed Ads</span>
                             </button>
                             <button onclick="switchTab('admin')" class="p-4 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg text-center transition">
                                 <i class="fa-solid fa-user-gear text-purple-700 text-xl mb-2"></i>
                                 <span class="block font-semibold text-purple-900 text-sm">Admin Panel</span>
                             </button>
-                        </div>
-                        <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-sm space-y-1 text-slate-600">
-                            <p><strong>Automated Savings:</strong> Track your personal account deposits, withdrawals, and profit shares effortlessly without spreadsheets.</p>
-                            <p><strong>Solidarity Tool:</strong> Broadcast and contribute to medical emergencies or funerals instantly.</p>
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
@@ -138,32 +130,51 @@
                                 <p class="font-semibold text-slate-800">August 2026 Completed</p>
                                 <p class="text-slate-500 text-xs mt-0.5">First month successfully executed (Ekei Che 1 & 2).</p>
                             </div>
-                            <div class="p-3 bg-slate-50 rounded-lg border-l-4 border-rose-500">
-                                <p class="font-semibold text-slate-800">Medical Crisis Appeal</p>
-                                <p class="text-slate-500 text-xs mt-0.5">Check Solidarity tab to support an active member emergency.</p>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 2: MASTER SCHEDULE -->
-            <div id="tab-master" class="tab-content space-y-6">
+            <!-- TAB 2: MEMBER DATABASE -->
+            <div id="tab-database" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div>
-                            <h3 class="font-bold text-slate-800 text-lg">PEXNA 94 Master Njangui Schedule (August 2026 – May 2027)</h3>
-                            <p class="text-xs text-slate-500 mt-1">Check when each beneficiary collects and inspect your personal subscription slots.</p>
+                            <h3 class="font-bold text-slate-800 text-lg"><i class="fa-solid fa-database text-emerald-700 mr-2"></i> PEXNA 94 Member Database</h3>
+                            <p class="text-xs text-slate-500 mt-1">Complete records of all 21 members, their subscribed hands, total contribution commitments, and collection months.</p>
                         </div>
-                        <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold">Total Pool: 50,000,000 XAF</span>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold">21 Active Members</span>
                     </div>
 
                     <div class="relative">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400"><i class="fa-solid fa-search"></i></span>
-                        <input type="text" id="master-search" oninput="renderMasterSchedule()" placeholder="Search by month or beneficiary name..." 
+                        <input type="text" id="member-search" oninput="renderMemberDatabase()" placeholder="Search member by name..." 
                                class="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
                     </div>
 
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-600 text-xs uppercase font-semibold">
+                                    <th class="p-3 rounded-l-lg">Member Name</th>
+                                    <th class="p-3">Subscribed Hands</th>
+                                    <th class="p-3">Total Contribution (XAF)</th>
+                                    <th class="p-3 rounded-r-lg">Collection Month(s)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="member-database-list" class="text-sm divide-y divide-slate-100"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: MASTER SCHEDULE -->
+            <div id="tab-master" class="tab-content space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800 text-lg">PEXNA 94 Master Njangui Schedule (August 2026 – May 2027)</h3>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-semibold">Total Pool: 50,000,000 XAF</span>
+                    </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
@@ -180,86 +191,53 @@
                 </div>
             </div>
 
-            <!-- TAB 3: SOLIDARITY & CRISES (Medical / Funerals) -->
+            <!-- TAB 4: SOLIDARITY -->
             <div id="tab-solidarity" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        <div>
-                            <h3 class="font-bold text-slate-800 text-lg"><i class="fa-solid fa-hand-holding-heart text-rose-600 mr-2"></i> Solidarity & Crisis Fund</h3>
-                            <p class="text-xs text-slate-500 mt-1">Share urgent events like medical emergencies, funerals, or crises. Members can view and contribute directly.</p>
-                        </div>
-                        <button onclick="reportCrisis()" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
-                            <i class="fa-solid fa-plus mr-1"></i> Report Emergency / Crisis
-                        </button>
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800 text-lg"><i class="fa-solid fa-hand-holding-heart text-rose-600 mr-2"></i> Solidarity & Crisis Fund</h3>
+                        <button onclick="reportCrisis()" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Report Emergency</button>
                     </div>
                     <div id="crisis-list" class="space-y-4"></div>
                 </div>
             </div>
 
-            <!-- TAB 4: GROUP ADS & PROMOTIONS -->
+            <!-- TAB 5: GROUP ADS -->
             <div id="tab-ads" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        <div>
-                            <h3 class="font-bold text-slate-800 text-lg"><i class="fa-solid fa-rectangle-ad text-blue-600 mr-2"></i> Njangi Group Feed Ads</h3>
-                            <p class="text-xs text-slate-500 mt-1">Promote your products or services directly within PEXNA 94.</p>
-                        </div>
-                        <button onclick="postAd()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
-                            <i class="fa-solid fa-bullhorn mr-1"></i> Post Advertisement
-                        </button>
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-slate-800 text-lg"><i class="fa-solid fa-rectangle-ad text-blue-600 mr-2"></i> Njangi Group Feed Ads</h3>
+                        <button onclick="postAd()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Post Advertisement</button>
                     </div>
                     <div id="ads-feed" class="space-y-4"></div>
                 </div>
             </div>
 
-            <!-- TAB 5: ADMIN PANEL -->
+            <!-- TAB 6: ADMIN PANEL -->
             <div id="tab-admin" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-4">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <h3 class="font-bold text-slate-800 text-lg"><i class="fa-solid fa-user-gear text-purple-600 mr-2"></i> Admin Panel & Group Management</h3>
-                            <p class="text-xs text-slate-500 mt-1">Manage members, configure sessions, and adjust group settings.</p>
-                        </div>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full font-semibold">Admin Mode Active</span>
-                    </div>
+                    <h3 class="font-bold text-slate-800 text-lg"><i class="fa-solid fa-user-gear text-purple-600 mr-2"></i> Admin Panel & Group Management</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-center">
                             <h4 class="font-semibold text-slate-700 text-sm">Total Members</h4>
                             <p class="text-2xl font-bold text-slate-900 mt-1">21 Verified</p>
-                            <button onclick="alert('Admin feature: Member verification list updated.')" class="mt-3 w-full bg-purple-600 text-white py-1.5 rounded text-xs font-semibold hover:bg-purple-700">Manage Members</button>
                         </div>
                         <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-center">
                             <h4 class="font-semibold text-slate-700 text-sm">Cycle Status</h4>
                             <p class="text-2xl font-bold text-emerald-600 mt-1">Active (Aug '26)</p>
-                            <button onclick="alert('Admin feature: Cycle settings saved.')" class="mt-3 w-full bg-purple-600 text-white py-1.5 rounded text-xs font-semibold hover:bg-purple-700">Configure Cycle</button>
                         </div>
                         <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-center">
                             <h4 class="font-semibold text-slate-700 text-sm">Broadcast Announcement</h4>
-                            <p class="text-2xl font-bold text-blue-600 mt-1">Instant Push</p>
-                            <button onclick="broadcastAnnouncement()" class="mt-3 w-full bg-purple-600 text-white py-1.5 rounded text-xs font-semibold hover:bg-purple-700">Send Notice</button>
+                            <button onclick="broadcastAnnouncement()" class="mt-2 w-full bg-purple-600 text-white py-1.5 rounded text-xs font-semibold hover:bg-purple-700">Send Notice</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 6: TRANSACTIONS & SAVINGS -->
+            <!-- TAB 7: TRANSACTIONS -->
             <div id="tab-transactions" class="tab-content space-y-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
-                            <p class="text-xs font-semibold text-emerald-800 uppercase">My Njangi Savings Account</p>
-                            <h4 class="text-2xl font-bold text-emerald-900 mt-1">250,000 XAF</h4>
-                        </div>
-                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                            <p class="text-xs font-semibold text-blue-800 uppercase">Total Profits Earned</p>
-                            <h4 class="text-2xl font-bold text-blue-900 mt-1">35,000 XAF</h4>
-                        </div>
-                        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
-                            <p class="text-xs font-semibold text-slate-600 uppercase">Net Withdrawn</p>
-                            <h4 class="text-2xl font-bold text-slate-900 mt-1">0 XAF</h4>
-                        </div>
-                    </div>
-                    <h3 class="font-bold text-slate-800 text-lg">Detailed Transaction History</h3>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-slate-800 text-lg mb-4">Payment Transaction History</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
@@ -277,20 +255,18 @@
                 </div>
             </div>
 
-            <!-- TAB 7: LOANS -->
+            <!-- TAB 8: LOANS -->
             <div id="tab-loans" class="tab-content space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-bold text-slate-800 text-lg">Group Loan Requests & Repayments</h3>
-                        <button onclick="requestLoan()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
-                            <i class="fa-solid fa-plus mr-1"></i> Request Loan
-                        </button>
+                        <button onclick="requestLoan()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">Request Loan</button>
                     </div>
                     <div class="space-y-3" id="loan-list"></div>
                 </div>
             </div>
 
-            <!-- TAB 8: CHAT -->
+            <!-- TAB 9: CHAT -->
             <div id="tab-chat" class="tab-content space-y-6">
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col h-[600px]">
                     <div class="p-4 border-b border-slate-200 bg-slate-50 rounded-t-xl flex justify-between items-center">
@@ -299,17 +275,15 @@
                     </div>
                     <div id="chat-messages" class="flex-grow p-4 overflow-y-auto space-y-3 bg-slate-50/50"></div>
                     <div class="p-4 border-t border-slate-200 bg-white rounded-b-xl flex gap-2">
-                        <input type="text" id="chat-input" placeholder="Type a message or announcement..." 
+                        <input type="text" id="chat-input" placeholder="Type a message..." 
                                class="flex-grow px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
                                onkeypress="if(event.key === 'Enter') sendChatMessage()">
-                        <button onclick="sendChatMessage()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2 rounded-lg font-semibold transition">
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </button>
+                        <button onclick="sendChatMessage()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2 rounded-lg font-semibold transition"><i class="fa-solid fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 9: BACKMARKET & ACCOUNTS -->
+            <!-- TAB 10: BACKMARKET & ACCOUNTS -->
             <div id="tab-services" class="tab-content space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
@@ -321,26 +295,19 @@
                             </div>
                             <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
                                 <p class="font-semibold text-slate-800">📱 MoMo Details</p>
-                                <p class="text-slate-600 text-xs mt-1">1) Float account: 677404090 (Odette Mehteh Sanyi)<br>2) Float code: 126*14*677404090*amount#<br>3) Regular account: 675760100 (Agbor Isaac Etchu)</p>
-                            </div>
-                            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                                <p class="font-semibold text-slate-800">💳 PayPal Details</p>
-                                <p class="text-slate-600 text-xs mt-1">Name: Sanyi Odette Mehteh</p>
+                                <p class="text-slate-600 text-xs mt-1">1) Float account: 677404090 (Odette Mehteh Sanyi)<br>2) Regular account: 675760100 (Agbor Isaac Etchu)</p>
                             </div>
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                         <h3 class="font-bold text-slate-800 text-lg mb-2"><i class="fa-solid fa-store text-emerald-700 mr-2"></i> Njangi Backmarket</h3>
-                        <p class="text-sm text-slate-500 mb-4">Post & discover verified services within PEXNA 94.</p>
                         <div class="space-y-3 mb-4" id="backmarket-list">
                             <div class="p-3 border border-slate-200 rounded-lg">
                                 <p class="font-semibold text-sm text-slate-800">Professional Tax & Accounting Services</p>
                                 <p class="text-xs text-slate-500">Offered by Frank Fru • 10% discount for members</p>
                             </div>
                         </div>
-                        <button onclick="postService()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 rounded-lg transition">
-                            Post New Service
-                        </button>
+                        <button onclick="postService()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-2.5 rounded-lg transition">Post New Service</button>
                     </div>
                 </div>
             </div>
@@ -359,6 +326,31 @@
 
     <!-- JavaScript Application Logic -->
     <script>
+        const memberDatabase = [
+            { name: "Ekei Che", hands: "10 Hands", totalContrib: "5,000,000 XAF", months: "August 2026" },
+            { name: "Ayute Eric", hands: "6 Hands", totalContrib: "3,000,000 XAF", months: "September 2026" },
+            { name: "Burnley Asanji", hands: "4 Hands", totalContrib: "2,000,000 XAF", months: "September 2026" },
+            { name: "Clotile Atu", hands: "7 Hands", totalContrib: "3,500,000 XAF", months: "October 2026, February 2027" },
+            { name: "Odette Sanyi", hands: "5 Hands", totalContrib: "2,500,000 XAF", months: "October 2026" },
+            { name: "Edna Atogho", hands: "4 Hands", totalContrib: "2,000,000 XAF", months: "November 2026, January 2027" },
+            { name: "Commy Kwalar", hands: "3 Hands", totalContrib: "1,500,000 XAF", months: "November 2026" },
+            { name: "Chi Fru", hands: "5 Hands", totalContrib: "2,500,000 XAF", months: "November 2026" },
+            { name: "Goodhopes Akwenwi", hands: "5 Hands", totalContrib: "2,500,000 XAF", months: "December 2026" },
+            { name: "Mba Jane", hands: "3 Hands", totalContrib: "1,500,000 XAF", months: "December 2026, April 2027" },
+            { name: "Eben Mancho", hands: "4 Hands", totalContrib: "2,000,000 XAF", months: "December 2026, February 2027" },
+            { name: "Julia Fortung", hands: "5 Hands", totalContrib: "2,500,000 XAF", months: "January 2027" },
+            { name: "Grace Chebe", hands: "3 Hands", totalContrib: "1,500,000 XAF", months: "January 2027" },
+            { name: "Fidelis Tatah", hands: "7 Hands", totalContrib: "3,500,000 XAF", months: "February 2027" },
+            { name: "Charly Atogho", hands: "10 Hands", totalContrib: "5,000,000 XAF", months: "March 2027" },
+            { name: "Tah Desire", hands: "1 Hand", totalContrib: "500,000 XAF", months: "April 2027" },
+            { name: "Germain Manor", hands: "1 Hand", totalContrib: "500,000 XAF", months: "April 2027" },
+            { name: "Chick Delphine", hands: "2 Hands", totalContrib: "1,000,000 XAF", months: "April 2027" },
+            { name: "Mbangwana Vera", hands: "2 Hands", totalContrib: "1,000,000 XAF", months: "April 2027" },
+            { name: "Abongou Louise", hands: "1 Hand", totalContrib: "500,000 XAF", months: "April 2027" },
+            { name: "Ningkum Courage", hands: "7 Hands", totalContrib: "3,500,000 XAF", months: "April 2027, May 2027" },
+            { name: "Numfor Neba", hands: "5 Hands", totalContrib: "2,500,000 XAF", months: "May 2027" }
+        ];
+
         const masterScheduleData = [
             { month: "Aug-26", beneficiary: "Ekei Che 1 & Ekei Che 2", hands: "10 Hands (50k each)", takeHome: "XAF 5,000,000" },
             { month: "Sep-26", beneficiary: "Ayute Eric", hands: "6 Hands (50k each)", takeHome: "XAF 3,000,000" },
@@ -389,34 +381,15 @@
             { month: "May-27", beneficiary: "Numfor Neba", hands: "5 Hands (50k each)", takeHome: "XAF 2,500,000" }
         ];
 
-        let crises = [
-            { id: 1, title: "Medical Support for Family Member", type: "Medical Emergency", raised: "120,000 XAF", target: "300,000 XAF", status: "Active 🚨" }
-        ];
-
-        let ads = [
-            { id: 1, title: "Professional Tax & Accounting Services", poster: "Frank Fru", desc: "Specialized corporate tax filing and business advisory. 10% discount for PEXNA 94 members." }
-        ];
-
-        let transactions = [
-            { date: "Aug 22, 2026", member: "Ekei Che", type: "August Contribution", amount: "500,000 XAF", status: "Completed ✅" },
-            { date: "Aug 22, 2026", member: "Chi Fru", type: "August Contribution", amount: "250,000 XAF", status: "Completed ✅" },
-            { date: "Aug 21, 2026", member: "Odette Sanyi", type: "August Contribution", amount: "250,000 XAF", status: "Completed ✅" }
-        ];
-
-        let loans = [
-            { id: 1, borrower: "Chi Fru", amount: "500,000 XAF", purpose: "Business Expansion", status: "Approved" },
-            { id: 2, borrower: "Atogho Charles", amount: "600,000 XAF", purpose: "Project Investment", status: "Active" }
-        ];
-
-        let chatMessages = [
-            { sender: "Asanji Burnley", text: "Na the New Njangui that we don play na only 1 time. So inside this first week for september we go play second time.", time: "01:36 AM" },
-            { sender: "Chi Fru", text: "Overall the njangui every month d comot 5million, divided proportionally to beneficiaries' subscribed slots.", time: "01:42 AM" }
-        ];
+        let crises = [{ id: 1, title: "Medical Support for Family Member", type: "Medical Emergency", raised: "120,000 XAF", target: "300,000 XAF" }];
+        let ads = [{ id: 1, title: "Professional Tax & Accounting Services", poster: "Frank Fru", desc: "10% discount for PEXNA 94 members." }];
+        let transactions = [{ date: "Aug 22, 2026", member: "Ekei Che", type: "August Contribution", amount: "500,000 XAF", status: "Completed ✅" }];
+        let loans = [{ id: 1, borrower: "Chi Fru", amount: "500,000 XAF", purpose: "Business Expansion", status: "Approved" }];
+        let chatMessages = [{ sender: "Chi Fru", text: "Welcome to the updated PEXNA 94 Member Database & App!", time: "01:42 AM" }];
 
         function handleLogin(e) {
             e.preventDefault();
-            const pass = document.getElementById('batch-password').value;
-            if(pass === 'pexna94') {
+            if(document.getElementById('batch-password').value === 'pexna94') {
                 document.getElementById('auth-screen').classList.add('hidden');
                 document.getElementById('app-screen').classList.remove('hidden');
                 initApp();
@@ -428,7 +401,6 @@
         function handleLogout() {
             document.getElementById('auth-screen').classList.remove('hidden');
             document.getElementById('app-screen').classList.add('hidden');
-            document.getElementById('batch-password').value = '';
         }
 
         function switchTab(tabId) {
@@ -437,13 +409,13 @@
                 btn.classList.remove('text-emerald-700', 'border-b-2', 'border-emerald-700');
                 btn.classList.add('text-slate-600');
             });
-            
             document.getElementById('tab-' + tabId).classList.add('active');
             event.currentTarget.classList.remove('text-slate-600');
             event.currentTarget.classList.add('text-emerald-700', 'border-b-2', 'border-emerald-700');
         }
 
         function initApp() {
+            renderMemberDatabase();
             renderMasterSchedule();
             renderCrises();
             renderAds();
@@ -452,15 +424,23 @@
             renderChat();
         }
 
+        function renderMemberDatabase() {
+            const query = document.getElementById('member-search').value.toLowerCase();
+            const el = document.getElementById('member-database-list');
+            const filtered = memberDatabase.filter(m => m.name.toLowerCase().includes(query));
+            el.innerHTML = filtered.map(m => `
+                <tr class="hover:bg-slate-50 transition ${m.name.toLowerCase().includes('chi fru') ? 'bg-emerald-50/60 font-semibold' : ''}">
+                    <td class="p-3 font-medium text-slate-900">${m.name}</td>
+                    <td class="p-3 text-slate-600">${m.hands}</td>
+                    <td class="p-3 font-bold text-slate-800">${m.totalContrib}</td>
+                    <td class="p-3 text-emerald-700">${m.months}</td>
+                </tr>
+            `).join('');
+        }
+
         function renderMasterSchedule() {
-            const searchQuery = document.getElementById('master-search').value.toLowerCase();
-            const scheduleEl = document.getElementById('master-schedule-list');
-            const filteredData = masterScheduleData.filter(item => 
-                item.month.toLowerCase().includes(searchQuery) || 
-                item.beneficiary.toLowerCase().includes(searchQuery)
-            );
-            scheduleEl.innerHTML = filteredData.map(item => `
-                <tr class="hover:bg-slate-50 transition ${item.beneficiary.toLowerCase().includes('chi fru') ? 'bg-emerald-50/60 font-semibold' : ''}">
+            document.getElementById('master-schedule-list').innerHTML = masterScheduleData.map(item => `
+                <tr class="hover:bg-slate-50 transition">
                     <td class="p-3 font-semibold text-slate-700">${item.month}</td>
                     <td class="p-3 font-medium text-slate-900">${item.beneficiary}</td>
                     <td class="p-3 text-slate-600">${item.hands}</td>
@@ -470,144 +450,69 @@
         }
 
         function renderCrises() {
-            const el = document.getElementById('crisis-list');
-            el.innerHTML = crises.map(c => `
-                <div class="p-4 border border-rose-200 bg-rose-50/50 rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <div>
-                        <span class="bg-rose-100 text-rose-800 text-xs px-2.5 py-0.5 rounded-full font-semibold">${c.type}</span>
-                        <h4 class="font-bold text-slate-900 mt-1">${c.title}</h4>
-                        <p class="text-xs text-slate-600 mt-1">Raised: <strong class="text-emerald-700">${c.raised}</strong> of ${c.target} target</p>
-                    </div>
-                    <button onclick="contributeCrisis(${c.id})" class="bg-rose-600 hover:bg-rose-700 text-white px-4 py-2 rounded-lg text-xs font-semibold transition">
-                        Contribute Now
-                    </button>
+            document.getElementById('crisis-list').innerHTML = crises.map(c => `
+                <div class="p-4 border border-rose-200 bg-rose-50/50 rounded-xl flex justify-between items-center">
+                    <div><h4 class="font-bold text-slate-900">${c.title}</h4><p class="text-xs text-slate-600">Raised: ${c.raised} of ${c.target}</p></div>
+                    <button onclick="alert('Contributed successfully!')" class="bg-rose-600 text-white px-4 py-2 rounded-lg text-xs font-semibold">Contribute</button>
                 </div>
             `).join('');
         }
 
         function renderAds() {
-            const el = document.getElementById('ads-feed');
-            el.innerHTML = ads.map(a => `
-                <div class="p-4 border border-blue-200 bg-blue-50/30 rounded-xl space-y-2">
-                    <div class="flex justify-between items-center">
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2.5 py-0.5 rounded-full font-semibold">Verified Member Ad</span>
-                        <span class="text-xs text-slate-400">Offered by ${a.poster}</span>
-                    </div>
-                    <h4 class="font-bold text-slate-900">${a.title}</h4>
-                    <p class="text-sm text-slate-600">${a.desc}</p>
-                </div>
+            document.getElementById('ads-feed').innerHTML = ads.map(a => `
+                <div class="p-4 border border-blue-200 bg-blue-50/30 rounded-xl"><h4 class="font-bold text-slate-900">${a.title}</h4><p class="text-sm text-slate-600">${a.desc}</p></div>
             `).join('');
         }
 
         function renderTransactions() {
-            const txEl = document.getElementById('transaction-list');
-            txEl.innerHTML = transactions.map(tx => `
-                <tr class="hover:bg-slate-50 transition">
-                    <td class="p-3 text-slate-500 text-xs">${tx.date}</td>
-                    <td class="p-3 font-medium text-slate-800">${tx.member}</td>
-                    <td class="p-3">${tx.type}</td>
-                    <td class="p-3 font-semibold text-slate-900">${tx.amount}</td>
-                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full">${tx.status}</span></td>
-                </tr>
+            document.getElementById('transaction-list').innerHTML = transactions.map(tx => `
+                <tr class="hover:bg-slate-50 transition"><td class="p-3 text-xs text-slate-500">${tx.date}</td><td class="p-3">${tx.member}</td><td class="p-3">${tx.type}</td><td class="p-3 font-semibold">${tx.amount}</td><td class="p-3"><span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full">${tx.status}</span></td></tr>
             `).join('');
         }
 
         function renderLoans() {
-            const loanEl = document.getElementById('loan-list');
-            loanEl.innerHTML = loans.map(l => `
-                <div class="p-4 border border-slate-200 rounded-lg flex justify-between items-center bg-slate-50">
-                    <div>
-                        <h4 class="font-bold text-slate-800">${l.borrower} - ${l.amount}</h4>
-                        <p class="text-xs text-slate-500 mt-0.5">Purpose: ${l.purpose}</p>
-                    </div>
-                    <span class="px-3 py-1 text-xs rounded-full font-semibold ${l.status === 'Approved' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800'}">${l.status}</span>
-                </div>
+            document.getElementById('loan-list').innerHTML = loans.map(l => `
+                <div class="p-4 border border-slate-200 rounded-lg flex justify-between items-center bg-slate-50"><div><h4 class="font-bold">${l.borrower} - ${l.amount}</h4><p class="text-xs text-slate-500">Purpose: ${l.purpose}</p></div><span class="px-3 py-1 text-xs rounded-full font-semibold bg-emerald-100 text-emerald-800">${l.status}</span></div>
             `).join('');
         }
 
         function renderChat() {
             const chatEl = document.getElementById('chat-messages');
             chatEl.innerHTML = chatMessages.map(msg => `
-                <div class="flex flex-col">
-                    <div class="flex items-center space-x-2">
-                        <span class="font-bold text-xs text-slate-800">${msg.sender}</span>
-                        <span class="text-[10px] text-slate-400">${msg.time}</span>
-                    </div>
-                    <div class="mt-1 bg-white p-3 rounded-lg border border-slate-200 shadow-sm text-sm text-slate-700 max-w-lg">
-                        ${msg.text}
-                    </div>
-                </div>
+                <div class="flex flex-col"><div class="flex items-center space-x-2"><span class="font-bold text-xs text-slate-800">${msg.sender}</span><span class="text-[10px] text-slate-400">${msg.time}</span></div><div class="mt-1 bg-white p-3 rounded-lg border border-slate-200 shadow-sm text-sm text-slate-700">${msg.text}</div></div>
             `).join('');
             chatEl.scrollTop = chatEl.scrollHeight;
         }
 
         function reportCrisis() {
-            const title = prompt("Enter emergency/crisis title (e.g., Funeral Support / Medical Emergency):");
-            const target = prompt("Enter target amount (e.g., 200,000 XAF):");
-            if(title && target) {
-                crises.push({ id: crises.length + 1, title: title, type: "Community Solidarity", raised: "0 XAF", target: target, status: "Active 🚨" });
-                renderCrises();
-                alert("Emergency broadcasted to group members successfully!");
-            }
-        }
-
-        function contributeCrisis(id) {
-            const amt = prompt("Enter contribution amount (e.g., 10,000 XAF):");
-            if(amt) {
-                alert(`Thank you! ${amt} contributed successfully to the solidarity fund.`);
-            }
+            const title = prompt("Enter emergency title:");
+            const target = prompt("Enter target amount:");
+            if(title && target) { crises.push({ id: crises.length+1, title, type: "Emergency", raised: "0 XAF", target }); renderCrises(); alert("Broadcasted!"); }
         }
 
         function postAd() {
-            const title = prompt("Enter advertisement title:");
-            const desc = prompt("Enter product/service description & discount offer:");
-            if(title && desc) {
-                ads.push({ id: ads.length + 1, title: title, poster: "Chi Fru", desc: desc });
-                renderAds();
-                alert("Advertisement posted to the group feed!");
-            }
+            const title = prompt("Ad title:"); const desc = prompt("Description & discount:");
+            if(title && desc) { ads.push({ id: ads.length+1, title, poster: "Chi Fru", desc }); renderAds(); alert("Posted!"); }
         }
 
         function broadcastAnnouncement() {
-            const msg = prompt("Enter announcement message to broadcast to all members:");
-            if(msg) {
-                chatMessages.push({ sender: "Admin (Chi Fru)", text: `📢 BROADCAST: ${msg}`, time: "Just now" });
-                renderChat();
-                alert("Announcement broadcasted to group chat successfully!");
-            }
+            const msg = prompt("Announcement message:");
+            if(msg) { chatMessages.push({ sender: "Admin", text: `📢 ${msg}`, time: "Just now" }); renderChat(); alert("Sent!"); }
         }
 
         function requestLoan() {
-            const purpose = prompt("Enter loan purpose:");
-            const amount = prompt("Enter loan amount (e.g., 200,000 XAF):");
-            if(purpose && amount) {
-                loans.push({ id: loans.length + 1, borrower: "Chi Fru", amount: amount, purpose: purpose, status: "Pending Approval" });
-                renderLoans();
-                alert("Loan request submitted successfully!");
-            }
+            const purpose = prompt("Loan purpose:"); const amount = prompt("Amount:");
+            if(purpose && amount) { loans.push({ id: loans.length+1, borrower: "Chi Fru", amount, purpose, status: "Pending" }); renderLoans(); alert("Requested!"); }
         }
 
         function sendChatMessage() {
             const input = document.getElementById('chat-input');
-            if(input.value.trim() !== '') {
-                chatMessages.push({ sender: "Chi Fru", text: input.value, time: "Just now" });
-                input.value = '';
-                renderChat();
-            }
+            if(input.value.trim() !== '') { chatMessages.push({ sender: "Chi Fru", text: input.value, time: "Just now" }); input.value = ''; renderChat(); }
         }
 
         function postService() {
-            const service = prompt("Enter service name:");
-            if(service) {
-                const list = document.getElementById('backmarket-list');
-                list.innerHTML += `
-                    <div class="p-3 border border-slate-200 rounded-lg mt-2">
-                        <p class="font-semibold text-sm text-slate-800">${service}</p>
-                        <p class="text-xs text-slate-500">Offered by Chi Fru • Member Verified</p>
-                    </div>
-                `;
-                alert("Service posted to Backmarket!");
-            }
+            const s = prompt("Service name:");
+            if(s) { document.getElementById('backmarket-list').innerHTML += `<div class="p-3 border border-slate-200 rounded-lg mt-2"><p class="font-semibold text-sm">${s}</p><p class="text-xs text-slate-500">Offered by Chi Fru • Verified</p></div>`; alert("Posted!"); }
         }
     </script>
 </body>
