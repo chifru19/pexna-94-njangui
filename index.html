@@ -576,5 +576,39 @@
             if(s) { document.getElementById('backmarket-list').innerHTML += `<div class="p-3 border border-slate-200 rounded-lg mt-2"><p class="font-semibold text-xs sm:text-sm">${s}</p><p class="text-xs text-slate-500">Offered by Chi Fru • Verified</p></div>`; alert("Posted!"); }
         }
     </script>
+
+    <!-- Admin Panel Content Section -->
+    <div id="admin-panel-section" class="tab-content space-y-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-4"><i class="fa-solid fa-user-shield text-emerald-600 mr-2"></i> Admin Panel & Group Management</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <span class="text-xs text-slate-500 uppercase font-bold">Total Members</span>
+                    <p class="text-2xl font-bold text-slate-900">21 Verified</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <span class="text-xs text-slate-500 uppercase font-bold">Cycle Status</span>
+                    <p id="display-cycle-status" class="text-2xl font-bold text-emerald-600">Active (Oct '26)</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <span class="text-xs text-slate-500 uppercase font-bold">Active Month Control</span>
+                    <input type="text" id="admin-cycle-input" placeholder="e.g. October 2026" class="mt-1 w-full p-2 border rounded text-sm">
+                    <button onclick="updateCycleStatus()" class="mt-2 w-full bg-slate-800 text-white py-1 rounded text-xs font-bold hover:bg-slate-900 transition">Update Status</button>
+                </div>
+            </div>
+
+            <!-- Broadcast Notice Form -->
+            <div class="border-t border-slate-200 pt-6">
+                <h4 class="text-sm font-bold uppercase tracking-wider text-slate-700 mb-3"><i class="fa-solid fa-bullhorn text-orange-600 mr-2"></i> Broadcast Announcement</h4>
+                <div class="space-y-3">
+                    <input type="text" id="admin-notice-title" placeholder="Notice Title (e.g. October 2026 Upcoming)" class="w-full p-2.5 border rounded-lg text-sm">
+                    <textarea id="admin-notice-desc" placeholder="Type custom announcement details here..." class="w-full p-2.5 border rounded-lg text-sm h-24"></textarea>
+                    <button onclick="broadcastNotice()" class="bg-orange-600 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow hover:bg-orange-700 transition">Send Notice Instantly</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
